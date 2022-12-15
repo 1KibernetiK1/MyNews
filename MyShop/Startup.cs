@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyNews.DataAccessLayer;
+using MyNews.Domains;
+using MyShop.Abstract;
 using MyShop.DataAccessLayer;
 using System;
 using System.Collections.Generic;
@@ -38,7 +41,10 @@ namespace MyShop
 
             services.AddControllersWithViews();
 			services.AddRazorPages();
-		}
+
+            services.AddTransient<IRepository<Article>, ArticleSqlRepository>();
+            services.AddTransient<IRepository<Rubric>, RubricSqlRepository>();
+        }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app,
@@ -69,7 +75,7 @@ namespace MyShop
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=Home}/{action=Index}/{id?}");
+					pattern: "{controller=Article}/{action=List}/{id?}");
 				endpoints.MapRazorPages();
 			});
 

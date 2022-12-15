@@ -1,39 +1,63 @@
 ﻿using MyNews.Domains;
 using MyShop.Abstract;
+using MyShop.DataAccessLayer;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyNews.DataAccessLayer
 {
     public class RubricSqlRepository : IRepository<Rubric>
     {
+        private readonly ApplicationDbContext _context;
+
+        public RubricSqlRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public void Create(Rubric model)
         {
-            throw new System.NotImplementedException();
+            var existing = FindByName(model.Name);
+            if (existing == null)
+            {
+                _context.Rubrics.Add(model);
+                _context.SaveChanges();
+            }
+            else
+            {
+                model.RubricId = existing.RubricId;
+            }
         }
 
         public void Delete(long id)
         {
-            throw new System.NotImplementedException();
+            var entry = _context.Rubrics.Find(id);
+            _context.Rubrics.Remove(entry);
+            _context.SaveChanges();
         }
 
         public Rubric FindByName(string name)
         {
-            throw new System.NotImplementedException();
+            return _context.Rubrics
+                .FirstOrDefault(c => c.Name == name);
         }
 
         public IEnumerable<Rubric> GetList()
         {
-            throw new System.NotImplementedException();
+            return _context.Rubrics;
         }
 
         public Rubric Read(long id)
         {
-            throw new System.NotImplementedException();
+            var entry = _context.Rubrics.Find(id);
+            return entry;
         }
 
         public void Update(Rubric model)
         {
-            throw new System.NotImplementedException();
+            var entry = _context.Rubrics.Find(model.RubricId);
+            _context.Entry(entry).CurrentValues.SetValues(model);
+            _context.SaveChanges();
         }
     }
 }
