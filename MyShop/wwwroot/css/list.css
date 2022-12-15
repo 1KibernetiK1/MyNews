@@ -1,0 +1,13 @@
+﻿.my_table {
+    border: 1px solid grey;
+    width: 1400px;
+    text-align: center;
+}
+
+th {
+    border: 1px solid grey;
+}
+
+td {
+    border: 1px solid grey;
+}
