@@ -5,7 +5,7 @@ namespace MyNews.Models
 {
     public class ArticlesViewModel
     {
-        public string Rubric { get; set; }
+        public Rubric Rubric { get; set; }
 
         public long ArticleId { get; set; }
 
@@ -30,7 +30,7 @@ namespace MyNews.Models
             Description = article.Description;
             CreationDate = article.CreationDate;
             ImageUrl = article.ImageUrl;
-            Rubric = article.ArticleRubric.Name;
+            Rubric = article.ArticleRubric;
         }
     }
 }
