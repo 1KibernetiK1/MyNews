@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MyNews.Models.ArticleShortModel>
+
+@{
+    ViewData["Title"] = "Новости";
+}
+
+<h1>Новости</h1>
+
+<table class="my_table">
+    <thead>
+        <tr>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.ArticleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td hidden>
+                @Html.DisplayFor(modelItem => item.ArticleId)
+            </td>
+            <td>
+                    @Html.ActionLink(
+                     item.Title,
+                     "Details",
+                     "ArticlePub",
+                     new { id = item.ArticleId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

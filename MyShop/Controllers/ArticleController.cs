@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyNews.Domains;
 using MyNews.Models;
 using MyShop.Abstract;
+using System.Data;
 using System.Linq;
 
 namespace MyNews.Controllers
 {
+    [Authorize(Roles = "Administrator,Redactor")]
     public class ArticleController : Controller
     {
         private readonly IRepository<Article> _repositoryArticle;

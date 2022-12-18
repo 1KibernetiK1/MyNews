@@ -1,15 +1,20 @@
 ﻿.my_table {
-    border: 1px solid grey;
-    width: 1400px;
-    text-align: center;
+    border-collapse: collapse;
+    line-height: 1.1;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background: radial-gradient(farthest-corner at 50% 50%, white, #DCECF8);
+    color: #0C213B;
 }
 
 th {
-    border: 1px solid grey;
+    padding: 10px;
+    border: 1px solid #A9E2CC;
 }
 
 td {
-    border: 1px solid grey;
+    font-size: 0.8em;
+    padding: 5px 7px;
+    border: 1px solid #A9E2CC;
 }
 
 

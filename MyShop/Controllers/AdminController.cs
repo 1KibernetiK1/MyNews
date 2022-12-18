@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyShop.Models;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace MyShop.Controllers
 {
-	public class AdminController : Controller
+    [Authorize(Roles = "Administrator")]
+    public class AdminController : Controller
 	{
 		private readonly UserManager<IdentityUser> userManager;
 		private readonly RoleManager<IdentityRole> roleManager;
@@ -68,8 +71,9 @@ namespace MyShop.Controllers
 			{
 				return NotFound();
 			}
-			IdentityRole role = roleManager.FindByIdAsync(id).Result;
-			AdminViewModel model = new AdminViewModel { Id = user.Id, Email = user.Email, Password = user.PasswordHash, Role = role.Name };
+            ViewBag.Roles = new List<string> { "Administrator", "Redactor", "Moderator" };
+            IdentityRole role = roleManager.FindByIdAsync(id).Result;
+			AdminViewModel model = new AdminViewModel { Id = user.Id, Email = user.Email, Password = user.PasswordHash };
 			return View(model);
 		}
 

@@ -27,13 +27,21 @@
                             Управление пользователями
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"
+                       asp-controller="Article"
+                       asp-action="List">
+                            Создание новостей
+                        </a>
+                    </li>
                 }
                 @if (User.IsInRole("Redactor"))
                 {
                     <li class="nav-item">
                         <a class="nav-link text-dark"
-                       asp-controller="ContentManager"
-                       asp-action="Index">
+                       asp-controller="Article"
+                       asp-action="List">
                             Создание статей и новостей
                         </a>
                     </li>
@@ -42,8 +50,8 @@
                 {
                     <li class="nav-item">
                         <a class="nav-link text-dark"
-                       asp-controller="ContentManager"
-                       asp-action="Index">
+                       asp-controller="Article"
+                       asp-action="List">
                             Управление статьями и новостями
                         </a>
                     </li>

@@ -75,7 +75,7 @@ namespace MyShop
 			{
 				endpoints.MapControllerRoute(
 					name: "default",
-					pattern: "{controller=Article}/{action=List}/{id?}");
+					pattern: "{controller=ArticlePub}/{action=List}/{id?}");
 				endpoints.MapRazorPages();
 			});
 

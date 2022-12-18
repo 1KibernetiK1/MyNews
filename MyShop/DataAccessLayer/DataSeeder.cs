@@ -28,11 +28,11 @@ namespace MyShop.DataAccessLayer
 		{
 			string[] roleNames = new string[]
 			{
-				"Administrator",
+                "Administrator",
 				"Redactor",
 				"Moderator",
-				"Guest"
-			};
+                "Guest"
+            };
 			if (roleManager.Roles.Count() > 0) return;
 
 			foreach (var roleName in roleNames)
