@@ -23,7 +23,7 @@ namespace MyNews.Models
 
         public ArticleShortModel(Article entity)
         {
-            ArticleId = entity.ArticleId;
+            ArticleId = (long)entity.ArticleId;
             Title = entity.Title;
             CreationDate = entity.CreationDate;
         }

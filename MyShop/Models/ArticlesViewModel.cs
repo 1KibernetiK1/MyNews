@@ -1,5 +1,7 @@
-﻿using MyNews.Domains;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyNews.Domains;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyNews.Models
 {
@@ -7,14 +9,24 @@ namespace MyNews.Models
     {
         public Rubric Rubric { get; set; }
 
-        public long ArticleId { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        public long? ArticleId { get; set; }
 
+        [Required]
+        [Display(Name = "Заголовок новости")]
         public string Title { get; set; }
 
+        [Required]
+        [Display(Name = "Описание новости")]
         public string Description { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        [Required]
+        [Display(Name = "Дата созданиея новости")]
+        [DataType(DataType.DateTime)]
+        public DateTime CreationDate { get; set; } = DateTime.Now;
 
+        [Display(Name = "Картинка новости")]
+        [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
 
         public ArticlesViewModel()

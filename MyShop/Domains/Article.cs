@@ -8,7 +8,7 @@ namespace MyNews.Domains
     public class Article
     {
         [Key]
-        public long ArticleId { get; set; }
+        public long? ArticleId { get; set; }
 
         public string Title { get; set; }
 

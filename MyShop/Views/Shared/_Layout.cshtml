@@ -3,58 +3,59 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MyShop</title>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"] - MyNews</title>
+    <link rel="stylesheet" href="~/css/site.css"/>
     <link rel="stylesheet" href="~/css/list.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
 </head>
 <body>
     <header>
-        <nav class="nav_header">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyShop</a>
-                <div class="header_links">
-                    <partial name="_LoginPartial" />
-                    <ul class="header_ul">
-                        @if (User.IsInRole("Administrator"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark"
-                               asp-controller="Admin"
-                               asp-action="Index">
-                                    Управление пользователями
-                                </a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Redactor"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark"
-                               asp-controller="ContentManager"
-                               asp-action="Index">
-                                    Создание статей и новостей
-                                </a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Moderator"))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark"
-                               asp-controller="ContentManager"
-                               asp-action="Index">
-                                    Управление статьями и новостями
-                                </a>
-                            </li>
-                        }
-                        <li class="nav-item">
+        <div class="logo">
+            <a href="/">
+                MyNews
+            </a>
+        </div>
+        <div class="menu">
+            <ul>
+                @if (User.IsInRole("Administrator"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"
+                       asp-controller="Admin"
+                       asp-action="Index">
+                            Управление пользователями
+                        </a>
+                    </li>
+                }
+                @if (User.IsInRole("Redactor"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"
+                       asp-controller="ContentManager"
+                       asp-action="Index">
+                            Создание статей и новостей
+                        </a>
+                    </li>
+                }
+                @if (User.IsInRole("Moderator"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark"
+                       asp-controller="ContentManager"
+                       asp-action="Index">
+                            Управление статьями и новостями
+                        </a>
+                    </li>
+                }
+               <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+               </li>
+                <partial name="_LoginPartial" />
+            </ul>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
