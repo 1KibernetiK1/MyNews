@@ -20,5 +20,7 @@ namespace MyNews.Domains
 
         public Rubric ArticleRubric { get; set; }
 
+        public Comment Comments { get; set; }
+
     }
 }
