@@ -50,12 +50,40 @@
         border-radius: 8px;
     }
 
-.tel {
+.login_reg {
     font-size: 20px;
     line-height: 24px;
+
 }
 
-    .tel a {
+    .login_reg a {
         color: #000;
         text-decoration: none;
+    }
+
+
+    .login_reg ul {
+        display: flex;
+        flex-flow: row nowrap;
+        margin: 2px 0 0;
+        padding: 0;
+        font-size: 16px;
+        line-height: 18px;
+        list-style: none;
+    }
+
+    .login_reg li {
+        margin-right: 20px;
+    }
+
+        .login_reg li:last-child {
+            margin-right: 0;
+        }
+
+    .login_reg a,
+    .login_reg .active {
+        display: block;
+        padding: 8px 10px;
+        text-transform: uppercase;
+        letter-spacing: .27em;
     }

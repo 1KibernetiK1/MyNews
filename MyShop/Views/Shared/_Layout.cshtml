@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="~/css/site.css"/>
     <link rel="stylesheet" href="~/css/list.css" />
     <link rel="stylesheet" href="~/css/header.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
 </head>
 <body>
     <header>
-        <div class="logo">
-            <a href="/">
-                MyNews
-            </a>
-        </div>
-        <div class="menu">
-            <ul>
+  <div class="logo">
+    <a href="/">
+      MyNews
+    </a>
+  </div>
+  <div class="menu">
+    <ul>
                 @if (User.IsInRole("Administrator"))
                 {
                     <li class="nav-item">
@@ -47,23 +48,25 @@
                         </a>
                     </li>
                 }
-               <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-               </li>
-                <partial name="_LoginPartial" />
-            </ul>
-        </div>
-    </header>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+         <li class="nav-item">
+             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>
+    </ul>
+  </div>
+  <div class="login_reg">
+       <partial name="_LoginPartial" />
+  </div>
+</header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer>
         <div class="container">
             &copy; 2022 - MyNews - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
