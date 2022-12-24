@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\CommentViewComponent.cs" />
     <Compile Remove="Data\Migrations\20221214160153_addmig.cs" />
     <Compile Remove="Data\Migrations\20221214160153_addmig.Designer.cs" />
   </ItemGroup>

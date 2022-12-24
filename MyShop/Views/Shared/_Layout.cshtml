@@ -69,6 +69,12 @@
   </div>
 </header>
     <div class="container">
+        <div class="col-2">
+            <!--
+            <vc:menuCategories></vc:menuCategories>
+            -->
+            @await Component.InvokeAsync("MenuRubric")
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

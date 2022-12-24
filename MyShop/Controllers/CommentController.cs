@@ -5,61 +5,46 @@ using System.Threading.Tasks;
 using System;
 using MyNews.Models;
 using MyShop.DataAccessLayer;
+using MyShop.Abstract;
 
 namespace MyNews.Controllers
 {
     public class CommentController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRepository<Comment> _repositoryComment;
 
-        public CommentController(ApplicationDbContext context)
+
+        public CommentController(IRepository<Comment> repositoryComment)
         {
-            _context = context;
+            _repositoryComment = repositoryComment;
         }
 
-        public async Task<IActionResult> Details(int id, CommentsViewModel model)
+        public IActionResult Create(long id)
         {
-            var post = model.PostId;
-            if (id != post.ArticleId)
-            {
-                return NotFound();
-            }
+            var comment = _repositoryComment.Read(id);
 
-            var oldTicket = await _context.Articles.SingleOrDefaultAsync(t => t.ArticleId == post.ArticleId);
-            var comment = new Comment();
+            return View(comment);
+        }
 
-
-            oldTicket.Comments.Add(comment);
-
-            comment.Content = model.Comment.Content;
-            comment.SendTime = DateTime.Now;
-            comment.TicketID = ticket.TicketId;
-            comment.Ticket = ticket;
-            comment.UserId = user.Id;
-            comment.User = user;
-
+        [HttpPost]
+        public IActionResult Create(CommentsViewModel model)
+        {
             if (ModelState.IsValid)
             {
-                try
+                Comment comment = new Comment()
                 {
-                    await _context.Comments.AddAsync(comment);
-                    _context.Update(oldTicket);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TicketExists(oldTicket.TicketId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                    CommentId= model.CommentId,
+                    Description= model.Description,
+                    ArticlesOfComments = model.ArticlesOfComments,
+                };
+
+                _repositoryComment.Create(comment);
+
+                return RedirectToAction("Details", "Article");
             }
+
             return View(model);
         }
+
     }
 }

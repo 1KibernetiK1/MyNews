@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata;
 
 namespace MyNews.Domains
 {
+    [Table("Comments")]
     public class Comment
     {
-        public string Description { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
-
         [Key]
         public long? CommentId { get; set; }
-        public IdentityUser AuthorId { get; set; }
-        public Article PostId { get; set; }
 
-      
+        public string Description { get; set; }
+
+        public virtual ICollection<Article> ArticlesOfComments { get; set; }
+
+
     }
 }

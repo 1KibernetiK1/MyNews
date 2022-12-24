@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MyShop.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    //[Authorize(Roles = "Administrator")]
     public class AdminController : Controller
 	{
 		private readonly UserManager<IdentityUser> userManager;

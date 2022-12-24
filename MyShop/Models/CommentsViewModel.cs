@@ -2,31 +2,32 @@
 using System;
 using MyNews.Domains;
 using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyNews.Models
 {
     public class CommentsViewModel
     {
-        public string Description { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
-
-        [Key]
+        [HiddenInput(DisplayValue = false)]
         public long? CommentId { get; set; }
-        public IdentityUser AuthorId { get; set; }
-        public Article PostId { get; set; }
+
+        [Required(ErrorMessage = "Напишите сообщение")]
+        [DataType(DataType.MultilineText)]
+        public string Description { get; set; }
+
+        public virtual ICollection<Article> ArticlesOfComments { get; set; }
 
         public CommentsViewModel()
         {
 
         }
 
-        public CommentsViewModel(Comment model)
+        public CommentsViewModel(Comment comment)
         {
-            Description= model.Description;
-            Date= model.Date;
-            CommentId = (long?)model.CommentId;
-            AuthorId = model.AuthorId;
-            PostId = model.PostId;
+            CommentId = comment.CommentId;
+            Description = comment.Description;
+            ArticlesOfComments = comment.ArticlesOfComments;
         }
     }
 }

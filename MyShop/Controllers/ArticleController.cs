@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MyNews.Controllers
 {
-    [Authorize(Roles = "Administrator,Redactor")]
+    //[Authorize(Roles = "Administrator,Redactor")]
     public class ArticleController : Controller
     {
         private readonly IRepository<Article> _repositoryArticle;
