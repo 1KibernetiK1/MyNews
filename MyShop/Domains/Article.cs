@@ -18,9 +18,9 @@ namespace MyNews.Domains
 
         public string ImageUrl { get; set; }
 
-        public Rubric ArticleRubric { get; set; }
+        public virtual Rubric ArticleRubric { get; set; }
 
-        public Comment Comments { get; set; }
+        //public Comment Comments { get; set; }
 
     }
 }

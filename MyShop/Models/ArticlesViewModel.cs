@@ -30,9 +30,9 @@ namespace MyNews.Models
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
 
-        [Display(Name = "Комментарий")]
-        [DataType(DataType.MultilineText)]
-        public Comment Comments { get; set; }
+        //[Display(Name = "Комментарий")]
+        //[DataType(DataType.MultilineText)]
+        //public Comment Comments { get; set; }
 
         public ArticlesViewModel()
         {
@@ -48,7 +48,6 @@ namespace MyNews.Models
             CreationDate = article.CreationDate;
             ImageUrl = article.ImageUrl;
             Rubric = article.ArticleRubric;
-            Comments = article.Comments;
         }
     }
 }
